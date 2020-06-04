@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../Header/Header';
 import RegistrationForm from './RegistrationForm/RegistrationForm';
 
@@ -28,10 +28,12 @@ import RegistrationForm from './RegistrationForm/RegistrationForm';
 //   updateName: PropTypes.func.isRequired,
 // };
 function HelloWorld () {
+  const [title, updateTitle] = useState(null);
+  const [errorMessage, updateErrorMessage] = useState(null)
   return (
     <div className="App">
       <Header />
-      <RegistrationForm />
+      <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle} />
     </div>
   )
 }
