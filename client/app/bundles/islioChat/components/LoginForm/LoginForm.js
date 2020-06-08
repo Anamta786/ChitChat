@@ -92,7 +92,7 @@ function LoginForm(props) {
             </div>
             <div className="registerMessage">
                 <span>Dont have an account? </span>
-                <div className="loginText" onClick={() => redirectToRegister()}>Register</div>
+                <span style={{color: '#007bff', fontWeight: 'bold', cursor: 'pointer'}} onClick={() => redirectToRegister()}>Register</span>
             </div>
         </div>
     )
