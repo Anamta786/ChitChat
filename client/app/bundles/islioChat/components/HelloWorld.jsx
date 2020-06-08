@@ -1,41 +1,37 @@
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import Header from '../Header/Header';
-import RegistrationForm from './RegistrationForm/RegistrationForm';
-
-// const HelloWorld = ({ name, updateName }) => (
-//   <div>
-//     <h3>
-//       Hello User, {name}!
-//     </h3>
-//     <hr />
-//     <form >
-//       <label htmlFor="name">
-//         Say hello to:
-//       </label>
-//       <input
-//         id="name"
-//         type="text"
-//         value={name}
-//         onChange={(e) => updateName(e.target.value)}
-//       />
-//     </form>
-//   </div>
-// );
+// import React, {useState} from 'react';
+// import Header from '../Header/Header';
+// import LoginForm from './LoginForm/LoginForm';
+// import RegistrationForm from './RegistrationForm/RegistrationForm';
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route
+// } from "react-router-dom";
+// import AlertComponent from './AlertComponent/AlertComponent';
+// function HelloWorld() {
+//   const [title, updateTitle] = useState(null);
+//   const [errorMessage, updateErrorMessage] = useState(null);
+//   return (
+//     <Router>
+//     <div className="App">
+//       <Header title={title}/>
+//         <div className="container d-flex align-items-center flex-column">
+//           <Switch>
+//             <Route path="/" exact={true}>
+//               <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
+//             </Route>
+//             <Route path="/register">
+//               <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle}/>
+//             </Route>
+//             <Route path="/login">
+//               <LoginForm showError={updateErrorMessage} updateTitle={updateTitle}/>
+//             </Route>
+//           </Switch>
+//           <AlertComponent errorMessage={errorMessage} hideError={updateErrorMessage}/>
+//         </div>
+//     </div>
+//     </Router>
+//   );
+// }
 //
-// HelloWorld.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   updateName: PropTypes.func.isRequired,
-// };
-function HelloWorld () {
-  const [title, updateTitle] = useState(null);
-  const [errorMessage, updateErrorMessage] = useState(null)
-  return (
-    <div className="App">
-      <Header />
-      <RegistrationForm showError={updateErrorMessage} updateTitle={updateTitle} />
-    </div>
-  )
-}
-
-export default HelloWorld
+// export default HelloWorld;
