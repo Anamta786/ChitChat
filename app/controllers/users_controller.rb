@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     p '++++++++++++++++++++++++++++==='
   end
   def login
+    p params
     p '>>>>>>>>>>>>>>>>>>>>>>'
   end
 end
