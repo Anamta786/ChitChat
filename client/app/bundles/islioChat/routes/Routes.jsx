@@ -8,7 +8,7 @@ import {
   Route
 } from "react-router-dom";
 import AlertComponent from '../components/AlertComponent/AlertComponent';
-function HelloWorld() {
+function Routes() {
   const [title, updateTitle] = useState(null);
   const [errorMessage, updateErrorMessage] = useState(null);
   return (
@@ -34,4 +34,4 @@ function HelloWorld() {
   );
 }
 
-export default HelloWorld;
+export default Routes;
