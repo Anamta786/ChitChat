@@ -3,6 +3,9 @@ import axios from 'axios';
 import './RegistrationForm.css';
 import {API_BASE_URL} from '../../constants/apiContants';
 import { withRouter } from "react-router-dom";
+import { postRequest } from '../../actions/getServerActions'
+import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
 
 function RegistrationForm(props) {
     const [state , setState] = useState({
@@ -25,22 +28,10 @@ function RegistrationForm(props) {
                 "email":state.email,
                 "password":state.password,
             }
-            axios.post(API_BASE_URL+'register', payload)
-                .then(function (response) {
-                    if(response.data.code === 200){
-                        setState(prevState => ({
-                            ...prevState,
-                            'successMessage' : 'Registration successful. Redirecting to home page..'
-                        }))
-                        redirectToHome();
-                        props.showError(null)
-                    } else{
-                        props.showError("Some error ocurred");
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+      props.postRequest('/api/v1/feedbacks/leave_a_review', { type: null, values: { name: 'Anamta' } })
+      .then(res => {
+        console.log(res, '{}{}{}{}{}{{}{}}')
+      })
         } else {
             props.showError('Please enter valid username and password')
         }
@@ -117,4 +108,20 @@ function RegistrationForm(props) {
     )
 }
 
-export default withRouter(RegistrationForm);
+const mapDispatchToProps = dispatch => {
+  return {
+    postRequest: (path, params) => dispatch(postRequest(path, params))
+  }
+}
+const userSignUp = reduxForm({
+  form: 'signUpForm',
+  touchOnBlur: false
+})(withRouter(RegistrationForm))
+
+export default connect(
+  state => ({
+    server: state.server
+  }),
+  mapDispatchToProps
+)(userSignUp)
+// export default withRouter(RegistrationForm);
