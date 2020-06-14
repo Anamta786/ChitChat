@@ -3,11 +3,7 @@ import './LoginForm.css';
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { withRouter } from "react-router-dom";
-import {
-  logInUser,
-  clearMessage,
-  logOut,
-} from '../../actions/authAction'
+import { postRequest } from '../../actions/getServerActions'
 
 function LoginForm (props) {
   const { handleSubmit } = props
@@ -30,11 +26,23 @@ function LoginForm (props) {
       'password' : state.password,
     }
     if (state.email.length && state.password.length) {
-      props.logInUser({ user: payload })
-    } else {
-      props.showError("Username and Password can't be blank");
+      let values = { user: {} }
+      values['user']['email'] = state.email
+      values['user']['password'] = state.password
+      console.log('values', values)
+      props.postRequest('/api/users/sign_in', { type: null, values: values })
+      .then(res => {
+        if (res.code === 200) {
+        console.log(res, '{}{}{}{}{}{{}{}}')
+        redirectToHome()
+      } else if (res.code === 404) {
+        props.showError(res.currentUser)
+      }
+      })
+        } else {
+            props.showError('Please enter valid username and password')
+        }
     }
-  }
 
   const redirectToHome = () => {
     props.updateTitle('Home')
@@ -89,7 +97,7 @@ function LoginForm (props) {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    logInUser: params => dispatch(logInUser(params))
+    postRequest: (path, params) => dispatch(postRequest(path, params))
   }
 }
 const userSignIn = reduxForm({

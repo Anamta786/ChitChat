@@ -23,19 +23,25 @@ function RegistrationForm(props) {
     }
     const sendDetailsToServer = () => {
         if(state.email.length && state.password.length) {
+          if (state.password.length > 5) {
             props.showError(null);
             const payload={
                 "email":state.email,
                 "password":state.password,
             }
-      props.postRequest('/api/v1/feedbacks/leave_a_review', { type: null, values: { name: 'Anamta' } })
+      props.postRequest('/api/users', { type: null, values: payload })
       .then(res => {
         console.log(res, '{}{}{}{}{}{{}{}}')
+        if (res.code === 200) {
+          props.history.push('/login')
+        }
       })
         } else {
-            props.showError('Please enter valid username and password')
+            props.showError('Password should be atleast 6 character or more.')
         }
-
+      } else {
+        props.showError('Please enter valid username and password.')
+      }
     }
     const redirectToHome = () => {
         props.updateTitle('Home')

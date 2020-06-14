@@ -167,6 +167,8 @@ export function deleteFailed (data) {
 export const deleteRequest = (path) => {
   return (dispatch) => {
     axios.delete(path).then((response) => {
+      axios.defaults.headers.common['X-CSRF-Token'] =
+        response.headers['x-csrf-token']
       return dispatch(deleted(response.data))
     })
       .catch((error) => {

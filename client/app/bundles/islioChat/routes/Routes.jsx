@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Header from '../Header/Header';
 import LoginForm from '../components/LoginForm/LoginForm';
+import Home from '../components/Home/Home';
 import RegistrationForm from '../components/RegistrationForm/RegistrationForm';
 import {
   BrowserRouter as Router,
@@ -25,6 +26,9 @@ function Routes() {
             </Route>
             <Route path="/login">
               <LoginForm showError={updateErrorMessage} updateTitle={updateTitle}/>
+            </Route>
+            <Route path="/home">
+              <Home showError={updateErrorMessage} updateTitle={updateTitle}/>
             </Route>
           </Switch>
           <AlertComponent errorMessage={errorMessage} hideError={updateErrorMessage}/>
