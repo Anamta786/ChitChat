@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   scope :api, defaults: { format: 'json' } do
     concerns :authrouting
   end
-    resources :grid
+  resources :grid
   root 'api/v1/main#index', as: :home_path
   get '*path', to: 'api/v1/main#index'
   # get '/users/sign_in', to: 'api/v1/main#index'

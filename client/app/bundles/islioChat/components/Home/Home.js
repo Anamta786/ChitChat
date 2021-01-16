@@ -16,7 +16,7 @@ function Home (props) {
   }
   return (
     <div>
-    <span className="h3">Afer Login Page</span>
+    <span className="h3">After Login Page</span>
     <button className="btn btn-primary" onClick={logOutRequest}>LogOut</button>
     </div>
   )
