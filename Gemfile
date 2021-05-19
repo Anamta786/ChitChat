@@ -9,7 +9,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'react_on_rails', '11.1.4'# Use the exact gem version to match npm version
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 gem 'devise'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
